@@ -32,6 +32,11 @@ Main command:
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
    done > raw_reads_summary.txt
    ```
+To use above `zcat` command in macOS, use the follwoing (it requires `<`):
+```
+for f in *R1*_.fastq.gz; do zcat < "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'; done > raw_reads_summary.txt
+```
+
 * Here is the job file to submit to Hydra:
 
    ```
